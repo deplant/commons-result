@@ -197,18 +197,27 @@ public class ResultTest {
 		assertThrows(NullPointerException.class, () -> NULL_RESULT.mapResult(func_to_result_str).orElseThrow());
 		assertThrows(ArithmeticException.class, () -> ERR_RESULT.mapResult(func_to_result_str).orElseThrow());
 		assertEquals("8", OK_RESULT.mapResult(func_to_result_str).orElse(() -> "0"));
+		assertEquals("0", OK_RESULT.mapResult(i -> {
+			if (1 == 2) {
+				return Result.of(i::toString);
+			} else {
+				throw new RuntimeException();
+			}
+			}).orElse(() -> "0"));
 	}
 
 	@Test
 	void mapErr() throws Exception {
 		assertEquals(TEST_EX_MSG, NULL_RESULT.mapErr(TEST_EX_MSG).errOrThrow("No error!").getMessage());
 		assertEquals(TEST_EX_MSG, ERR_RESULT.mapErr(TEST_EX_MSG).errOrThrow("No error!").getMessage());
+		assertEquals(8, OK_RESULT.mapErr(TEST_EX_MSG).orElse(() -> 0));
 	}
 
 	@Test
 	void mapErr_lazy() {
 		assertThrows(TestException.class, () -> NULL_RESULT.mapErr(supplier_text_ex).orElseThrow());
 		assertThrows(TestException.class, () -> ERR_RESULT.mapErr(supplier_text_ex).orElseThrow());
+		assertEquals(8, OK_RESULT.mapErr(supplier_text_ex).orElse(() -> 0));
 	}
 
 	@Test
@@ -217,6 +226,7 @@ public class ResultTest {
 		assertThrows(NullPointerException.class, () -> NULL_RESULT.mapErrIf(ex -> false,supplier_text_ex).orElseThrow());
 		assertThrows(TestException.class, () -> ERR_RESULT.mapErrIf(ex -> true,supplier_text_ex).orElseThrow());
 		assertThrows(ArithmeticException.class, () -> ERR_RESULT.mapErrIf(ex -> false,supplier_text_ex).orElseThrow());
+		assertEquals(8, OK_RESULT.mapErrIf(ex -> true,supplier_text_ex).orElse(() -> 0));
 	}
 
 	@Test

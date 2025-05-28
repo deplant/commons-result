@@ -24,11 +24,7 @@ public record Ok<T>(T result) implements Result<T> {
 
 	@Override
 	public <R> Result<R> map(Function<T, R> mapper) {
-		try {
-			return Result.of(() -> mapper.apply(result()));
-		} catch (Exception e) {
-			return new Err<>(e);
-		}
+		return Result.of(() -> mapper.apply(result()));
 	}
 
 	@Override
