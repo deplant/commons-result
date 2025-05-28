@@ -6,7 +6,7 @@
 * Discuss in
   Telegram: [![Channel on Telegram](https://img.shields.io/badge/chat-on%20telegram-9cf.svg)](https://t.me/deplant\_chat\_en)
 * Read full
-  docs: [![javadoc](https://javadoc.io/badge2/tech.deplant.commons/commons-core/javadoc.svg)](https://javadoc.io/doc/tech.deplant.java4ever/java4ever-utils)
+  docs: [![javadoc](https://javadoc.io/badge2/tech.deplant.commons/commons-core/javadoc.svg)](https://javadoc.io/doc/tech.deplant.commons/result)
 
 **Result API** is a small Java library with a wrapper class named `Result`. 
 Idea comes from Rust [std.Result crate](https://doc.rust-lang.org/std/result/).
