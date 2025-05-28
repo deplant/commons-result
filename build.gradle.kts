@@ -60,7 +60,7 @@ publishing {
             from(components["java"])
             pom {
                 name = "result"
-                description = "Development framework for Everscale DApp development"
+                description = "Result API for Java"
                 url = "https://github.com/deplant/commons"
                 licenses {
                     license {
