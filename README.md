@@ -8,9 +8,14 @@
 * Read full
   docs: [![javadoc](https://javadoc.io/badge2/tech.deplant.commons/commons-core/javadoc.svg)](https://javadoc.io/doc/tech.deplant.commons/result)
 
-**Result API** is a small Java library with a wrapper class named `Result`. 
-Idea comes from Rust [std.Result crate](https://doc.rust-lang.org/std/result/).
-Perfectly suited for pattern matching or more traditional conditional statements
+**Deplant Commons Result API** implements **Result Pattern** for Java. It is a small 
+Java library with a wrapper class named `Result` with sealed implementations `Ok` 
+and `Err`. 
+Idea comes from Rust [std.Result crate](https://doc.rust-lang.org/std/result/) with 
+some changes in API to better suite Java needs.
+
+Made in functional style, it perfectly matches with **Pattern matching** techniques 
+or more traditional conditional statements
 to manage results.
 
 ## Writing function that can throw
@@ -21,6 +26,9 @@ public static Result<Integer> functionCanFail(Integer i) {
 ```
 
 ## Pattern matching result variants
+
+As `Result` is a **sealed** interface, you can **pattern match** it without `default` branch.
+
 ```java
 var result = Result.of(() -> 8 / 0);
 
@@ -32,7 +40,12 @@ switch (result) {
 // prints "Err: / by zero"
 ```
 
-## Mapping results
+## Mapping and unwrapping results
+
+Results can be chained with other results through `.result.mapResult( functionThatCanFail )`,
+wrapped value and type can be transformed though `.map( functionThatShouldntFail )`. 
+If you like to transpose `Result<>` to `Optional<>` you can do it with `Result.ofOptional()` 
+, `.ok()` and `.err()` methods.
 
 ```java
 Result<Integer> goodResult = Result.of(() -> 7);
