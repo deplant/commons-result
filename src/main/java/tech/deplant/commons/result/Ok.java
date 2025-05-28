@@ -5,6 +5,12 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+/**
+ * Ok variant of Result. Holds actual wrapped result value.
+ *
+ * @param result wrapped value. You can retrieve it with orElse(), orElseThrow() or just result() if you pattern matched to Ok class.
+ * @param <T> type of wrapped value
+ */
 public record Ok<T>(T result) implements Result<T> {
 	@Override
 	public boolean isOk() {

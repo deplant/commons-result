@@ -5,6 +5,12 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+/**
+ * Error variant of Result
+ *
+ * @param error holds Exception that triggered the creation of the Err result.
+ * @param <T> type of the Ok result (not used in Err as is)
+ */
 public record Err<T>(Exception error) implements Result<T> {
 	@Override
 	public boolean isOk() {
