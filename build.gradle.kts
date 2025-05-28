@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "tech.deplant.commons"
-version = "0.1.0"
+version = "0.2.0-SNAPSHOT"
 
 val jdkVersion = JavaLanguageVersion.of("21")
 
