@@ -15,8 +15,10 @@ Idea comes from Rust [std.Result crate](https://doc.rust-lang.org/std/result/) w
 some changes in API to better suite Java needs.
 
 Made in functional style, it perfectly matches with **Pattern matching** techniques 
-or more traditional conditional statements
-to manage results.
+or more traditional conditional statements to manage results. Supports chaining results, 
+most of the functions are lazy and don't do unnecessary work.
+
+Library is pure Java and has no dependencies aside from test ones.
 
 ## Writing function that can throw
 ```java
@@ -56,7 +58,11 @@ Integer digit = combinedResult.orElse(2); // get or default when fail
 Optional<Integer> optionalDigit = combinedResult.ok(); // get as optional (empty when fail)
 ```
 
-#### Add to your Maven of Gradle setup:
+## Requirements
+
+* OpenJDK 21 (or more)
+*
+## Maven or Gradle setup:
 
 * Gradle
 
