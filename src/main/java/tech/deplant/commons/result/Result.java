@@ -28,7 +28,8 @@ public sealed interface Result<T> permits Ok, Err {
 	 * Encapsulates lazy getter as a result object.
 	 * Use orElseXXX methods to unwrap result and isOk(), isErr() to check status.
 	 *
-	 * @param throwableSupplier getter for encapsulation
+	 * @param throwableSupplier regular supplier of wrapped value, but it can rethrow exceptions
+	 * @param exceptionSupplier custom exception supplier
 	 * @param <T>               type of value
 	 * @return wrapped result of execution
 	 */
@@ -150,6 +151,7 @@ public sealed interface Result<T> permits Ok, Err {
 	/**
 	 * Returns underlying Err exception or throws if result was Ok.
 	 *
+	 * @param errorMessage custom error message
 	 * @return Err exception or throw if Ok
 	 */
 	Exception errOrThrow(String errorMessage) throws Exception;
@@ -162,8 +164,20 @@ public sealed interface Result<T> permits Ok, Err {
 	 */
 	Optional<T> ok();
 
+	/**
+	 * Gets wrapped result if Ok or alternative if Err.
+	 *
+	 * @param defaultResult alternative value if Err
+	 * @return wrapped result if Ok or alternative if Err.
+	 */
 	T orElse(T defaultResult);
 
+	/**
+	 * Gets wrapped result if Ok or alternative if Err. Lazy version.
+	 *
+	 * @param defaultResultSupplier alternative value supplier if Err
+	 * @return wrapped result if Ok or alternative if Err.
+	 */
 	T orElse(Supplier<T> defaultResultSupplier);
 
 	/**
