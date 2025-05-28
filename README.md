@@ -49,7 +49,7 @@ Optional<Integer> optionalDigit = combinedResult.ok(); // get as optional (empty
 
 ```groovy
 dependencies {
-    implementation 'tech.deplant.commons:result:0.1.0'
+    implementation 'tech.deplant.commons:result:0.2.0'
 }
 ```
 
@@ -59,6 +59,6 @@ dependencies {
 <dependency>
     <groupId>tech.deplant.commons</groupId>
     <artifactId>result</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
 </dependency>
 ```
