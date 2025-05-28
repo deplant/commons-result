@@ -1,0 +1,9 @@
+[versions]
+junit = "5.12.2"
+
+[libraries]
+# JUnit
+junit-bom = "org.junit:junit-bom:5.12.2"
+junit-api = { module = "org.junit.jupiter:junit-jupiter-api" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-launcher = { module = "org.junit.platform:junit-platform-launcher" }
